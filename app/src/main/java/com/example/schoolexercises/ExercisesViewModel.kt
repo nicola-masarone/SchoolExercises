@@ -10,6 +10,7 @@ class ExercisesViewModel : ViewModel() {
         EX1,        // Visualizza "Ciao"
         EX2,
         EX3,
+        EX12,
         NONE
     }
 
@@ -27,6 +28,19 @@ class ExercisesViewModel : ViewModel() {
         if (myText!=_outputText.value) {
             _outputText.value = myText
         }
+    }
+
+    private val _nValue = MutableLiveData<String>("")
+    val nValue: LiveData<String> = _nValue
+    fun setNValue(myText: String) {
+        if (myText!=_nValue.value) {
+            _nValue.value = myText
+        }
+    }
+
+    fun resetViewData() {
+        setOutputText("")
+        setNValue("")
     }
 
 }

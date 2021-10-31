@@ -21,11 +21,11 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun SelectExercise( myViewModel: ExercisesViewModel = ExercisesViewModel(), navigateToDestination: (String) -> Unit = {"destination"}) {
 
-    val exerciseSelection: ExercisesViewModel.Exercise by myViewModel.selectedExercise.observeAsState(
-        initial = ExercisesViewModel.Exercise.NONE
-    )
+    val exerciseSelection: ExercisesViewModel.Exercise by myViewModel.selectedExercise.observeAsState(initial = ExercisesViewModel.Exercise.NONE)
+    //val nValue: ExercisesViewModel.
 
-    myViewModel.setOutputText("")
+
+    myViewModel.resetViewData()
 
     Column() {
         Text(
@@ -63,6 +63,8 @@ fun ShowExercises(
     val exercises = mutableListOf(ExercisesViewModel.Exercise.EX1)
     exercises.add(ExercisesViewModel.Exercise.EX2)
     exercises.add(ExercisesViewModel.Exercise.EX3)
+    exercises.add(ExercisesViewModel.Exercise.EX12)
+
 
     LazyColumn {
         items(exercises.size) { index ->
@@ -98,6 +100,7 @@ fun ExerciseRow(
                 ExercisesViewModel.Exercise.EX1 -> "Visualizza la scritta \"Ciao\""
                 ExercisesViewModel.Exercise.EX2 -> "Esercizio 2"
                 ExercisesViewModel.Exercise.EX3 -> "Esercizio 3"
+                ExercisesViewModel.Exercise.EX12 -> "Inserito un valore intero positivo N, visualizzare i valori interi da 1 a N"
                 else -> ""
             },
             modifier = Modifier
