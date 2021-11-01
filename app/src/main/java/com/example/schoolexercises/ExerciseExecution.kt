@@ -24,6 +24,7 @@ fun ShowExercise(myViewModel: ExercisesViewModel) {
 
     val outputText: String by myViewModel.outputText.observeAsState(initial = "")
     val nValue: String by myViewModel.nValue.observeAsState(initial = "")
+    val paramArray: Array<String>? by myViewModel.valArray.observeAsState()
 
     when(myViewModel.selectedExercise.value) {
 
@@ -32,8 +33,14 @@ fun ShowExercise(myViewModel: ExercisesViewModel) {
             outputText = outputText
         )
 
-        ExercisesViewModel.Exercise.EX2 -> RunExercise2()
-
+        ExercisesViewModel.Exercise.EX2 -> RunExercise2(
+            {myAdd1Val, index1 -> myViewModel.setValArray(myAdd1Val, index1) },
+            add1Val = paramArray!![0],
+            {myAdd2Val, index2 -> myViewModel.setValArray(myAdd2Val, index2) },
+            add2Val = paramArray!![1],
+            {textOutput -> myViewModel.setOutputText(textOutput)},
+            outputText = outputText
+        )
 
         ExercisesViewModel.Exercise.EX12 -> RunExercise12(
             {myValue -> myViewModel.setNValue(myValue)},
@@ -41,6 +48,7 @@ fun ShowExercise(myViewModel: ExercisesViewModel) {
             {textOutput -> myViewModel.setOutputText(textOutput)},
             outputText = outputText
         )
+
         else -> { }
 
     }

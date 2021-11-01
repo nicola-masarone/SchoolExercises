@@ -22,9 +22,7 @@ class MainActivity : ComponentActivity() {
             SchoolExercisesTheme{
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    MyApp(
-                        myViewModel
-                    )
+                    MyApp(myViewModel)
                 }
             }
         }
@@ -32,9 +30,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MyApp(
-    myViewModel: ExercisesViewModel
-) {
+fun MyApp(myViewModel: ExercisesViewModel) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "selectExercise") {

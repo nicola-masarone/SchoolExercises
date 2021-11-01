@@ -98,7 +98,7 @@ fun ExerciseRow(
         Text(
             text = when (exercise) {
                 ExercisesViewModel.Exercise.EX1 -> "Visualizza la scritta \"Ciao\""
-                ExercisesViewModel.Exercise.EX2 -> "Esercizio 2"
+                ExercisesViewModel.Exercise.EX2 -> "Inserire due valori interi e visualizzarne la somma"
                 ExercisesViewModel.Exercise.EX3 -> "Esercizio 3"
                 ExercisesViewModel.Exercise.EX12 -> "Inserito un valore intero positivo N, visualizzare i valori interi da 1 a N"
                 else -> ""

@@ -1,5 +1,6 @@
 package com.example.schoolexercises
 
+import androidx.compose.runtime.State
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -38,9 +39,26 @@ class ExercisesViewModel : ViewModel() {
         }
     }
 
+    // TO BE INVESTIGATED
+    private val _valArray =  MutableLiveData<Array<String>>(Array<String>(10, init= {_ -> ""}))
+    val valArray: LiveData<Array<String>> = _valArray
+    fun setValArray(myText: String, index: Int) {
+        if (index< _valArray.value!!.size) {
+            val dummyArray = _valArray.value!!.clone()
+            dummyArray[index] = myText
+            _valArray.value = dummyArray.clone()
+        }
+    }
+    // TO BE INVESTIGATED
+
+
     fun resetViewData() {
         setOutputText("")
         setNValue("")
-    }
 
+        for (index in valArray.value!!.indices) {
+            setValArray("", index = index)
+        }
+
+    }
 }
