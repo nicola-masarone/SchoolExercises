@@ -14,7 +14,11 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
@@ -29,11 +33,10 @@ fun RunExercise12(
     Column(modifier = Modifier.padding(10.dp)) {
         Text(
             fontSize = 16.sp,
-            text =
-            """
-                Esercizio: Inserito un valore N, visualizzare i valori da 1 a N.
-                Inserire prima il valore N nella relativa casella e poi premere il tasto Play.
-                """.trimIndent(),
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) { append("Esercizio: Inserito un valore N, visualizzare i valori da 1 a N\n") }
+                append("Inserire prima il valore N nella relativa casella e poi premere il tasto Play.")
+            },
             modifier = Modifier.padding(vertical = 10.dp)
         )
 

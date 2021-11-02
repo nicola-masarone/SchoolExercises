@@ -10,6 +10,12 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.ParagraphStyle
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -21,12 +27,16 @@ fun RunExercise1(
     Column(modifier = Modifier.padding(10.dp)) {
         Text(
             fontSize = 16.sp,
-            text =
-            """
-                Esercizio: visualizza Ciao.
-                Obiettivo di questo programma è mostrare la scritta "Ciao".
-                Per l'esecuzione premere il tasto Play
-                """.trimIndent(),
+            text = buildAnnotatedString {
+                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) { append("Esercizio: visualizza ") }
+                withStyle(style = SpanStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontStyle = FontStyle.Italic
+                )) { append("Ciao\n") }
+                append("Obiettivo di questo programma è mostrare la scritta ")
+                withStyle(style = SpanStyle(fontStyle = FontStyle.Italic)) { append("Ciao\n") }
+                append("Per l'esecuzione premere il tasto Play.\n")
+            },
             modifier = Modifier.padding(vertical = 10.dp)
         )
 
