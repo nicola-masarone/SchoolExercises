@@ -1,11 +1,9 @@
 package com.example.schoolexercises
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -34,14 +32,21 @@ fun RunExercise2(
     outputText: String
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
-        Text(
-            fontSize = 16.sp,
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) { append("Esercizio: inserire due valori interi e visualizzarne la somma\n") }
-                append("Inserire prima i due addendi nelle relative caselle e poi premere il tasto Play.")
-            },
-            modifier = Modifier.padding(vertical = 10.dp)
-        )
+        Box(
+            modifier = Modifier
+                .background(Color(0x80ffe0b2), RoundedCornerShape(16.dp))
+                .padding(10.dp)
+                .fillMaxWidth()
+        ) {
+            Text(
+                fontSize = 16.sp,
+                text = buildAnnotatedString {
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) { append("Esercizio: inserire due valori interi e visualizzarne la somma\n") }
+                    append("Inserire i due addendi nelle relative caselle e premere il tasto Play.")
+                },
+                modifier = Modifier.padding(vertical = 5.dp)
+            )
+        }
 
         OutlinedTextField(
             value = add1Val,
@@ -60,7 +65,7 @@ fun RunExercise2(
         )
 
         Button(
-            enabled = add1Val.isDigitsOnly() && add1Val!="" && add2Val.isDigitsOnly() && add2Val!="",
+            enabled = add1Val.isDigitsOnly() && add1Val != "" && add2Val.isDigitsOnly() && add2Val != "",
             onClick = {
                 setOutputText("La somma é: " + (add1Val.toInt() + add2Val.toInt()).toString(), 2)
             },
@@ -80,6 +85,5 @@ fun RunExercise2(
             fontSize = 20.sp
         )
     }
-
 }
 

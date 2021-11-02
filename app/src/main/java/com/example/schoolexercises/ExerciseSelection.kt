@@ -1,17 +1,17 @@
 package com.example.schoolexercises
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,19 +24,24 @@ fun SelectExercise( myViewModel: ExercisesViewModel = ExercisesViewModel(), navi
 
     myViewModel.resetViewData()
 
-    Column() {
-        Text(
-            fontSize = 16.sp,
-            text =
-            """
+    Column(modifier = Modifier.padding(10.dp)) {
+        Box(modifier = Modifier
+            .background(Color(0x80ffe0b2), RoundedCornerShape(16.dp))
+            .padding(10.dp)
+            .fillMaxWidth()
+        ) {
+            Text(
+                fontSize = 16.sp,
+                text =
+                """
                 Benvenuti nell'app Esercizi di Informatica.
                 Selezionate un esercizio tra quelli elencati
                 e buon divertimento!
                 """.trimIndent(),
-            modifier = Modifier
-                .padding(10.dp)
-                .weight(1F)
-        )
+                modifier = Modifier
+                    .padding(5.dp)
+            )
+        }
 
         Box(modifier = Modifier.weight(2F)) {
             ShowExercises(
@@ -45,9 +50,7 @@ fun SelectExercise( myViewModel: ExercisesViewModel = ExercisesViewModel(), navi
                 { destination -> navigateToDestination(destination) }
             )
         }
-
     }
-
 }
 
 

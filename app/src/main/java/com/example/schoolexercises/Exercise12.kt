@@ -1,11 +1,9 @@
 package com.example.schoolexercises
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
@@ -31,14 +29,21 @@ fun RunExercise12(
     outputText: String
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
-        Text(
-            fontSize = 16.sp,
-            text = buildAnnotatedString {
-                withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) { append("Esercizio: Inserito un valore N, visualizzare i valori da 1 a N\n") }
-                append("Inserire prima il valore N nella relativa casella e poi premere il tasto Play.")
-            },
-            modifier = Modifier.padding(vertical = 10.dp)
-        )
+        Box(
+            modifier = Modifier
+                .background(Color(0x80ffe0b2), RoundedCornerShape(16.dp))
+                .padding(10.dp)
+                .fillMaxWidth()
+        ) {
+            Text(
+                fontSize = 16.sp,
+                text = buildAnnotatedString {
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) { append("Esercizio: Inserito un valore N, visualizzare i valori da 1 a N\n") }
+                    append("Inserire il valore N nella relativa casella e premere il tasto Play.")
+                },
+                modifier = Modifier.padding(vertical = 5.dp)
+            )
+        }
 
         OutlinedTextField(
             value = nVal,
