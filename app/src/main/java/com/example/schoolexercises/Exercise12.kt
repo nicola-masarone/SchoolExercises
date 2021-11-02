@@ -21,9 +21,9 @@ import androidx.core.text.isDigitsOnly
 
 @Composable
 fun RunExercise12(
-    setNValue: (nValue: String ) -> Unit,
+    setNValue: (nValue: String, index: Int ) -> Unit,
     nVal: String,
-    setOutputText: (outputText: String) -> Unit,
+    setOutputText: (outputText: String, indexOut: Int) -> Unit,
     outputText: String
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
@@ -39,7 +39,7 @@ fun RunExercise12(
 
         OutlinedTextField(
             value = nVal,
-            onValueChange = { setNValue(it) },
+            onValueChange = { setNValue(it, 0) },
             label = { Text("N") },
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -57,7 +57,7 @@ fun RunExercise12(
                     else
                         evalText + "\n" + i.toString()
                 }
-                setOutputText(evalText)
+                setOutputText(evalText, 1)
             },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }

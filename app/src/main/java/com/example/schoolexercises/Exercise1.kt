@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun RunExercise1(
-    setOutputText: (outputText:String) -> Unit,
+    setOutputText: (outputText:String, index: Int) -> Unit,
     outputText: String
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
@@ -32,7 +32,7 @@ fun RunExercise1(
 
         Button(
             enabled = true,
-            onClick = { setOutputText("Ciao") },
+            onClick = { setOutputText("Ciao", 0) },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }
 

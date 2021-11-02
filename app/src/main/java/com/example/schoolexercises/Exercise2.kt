@@ -25,7 +25,7 @@ fun RunExercise2(
     add1Val: String,
     setAdd2Val: (add2Val: String, index2: Int ) -> Unit,
     add2Val: String,
-    setOutputText: (outputText: String) -> Unit,
+    setOutputText: (outputText: String, index: Int) -> Unit,
     outputText: String
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
@@ -58,7 +58,7 @@ fun RunExercise2(
         Button(
             enabled = add1Val.isDigitsOnly() && add1Val!="" && add2Val.isDigitsOnly() && add2Val!="",
             onClick = {
-                setOutputText((add1Val.toInt() + add2Val.toInt()).toString())
+                setOutputText((add1Val.toInt() + add2Val.toInt()).toString(), 2)
             },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }
