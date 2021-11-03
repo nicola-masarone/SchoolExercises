@@ -63,15 +63,7 @@ fun RunExercise3(
 
         Button(
             enabled = firstVal.isDigitsOnly() && firstVal != "" && secondVal.isDigitsOnly() && secondVal != "" && firstVal!=secondVal,
-            onClick = {
-                setVal("Il maggiore é: " +
-                        if(firstVal.toInt() > secondVal.toInt())
-                            firstVal
-                        else
-                            secondVal,
-                    2
-                )
-            },
+            onClick = { setVal(evalResult(firstVal, secondVal),2) },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }
 
@@ -88,4 +80,12 @@ fun RunExercise3(
             fontSize = 20.sp
         )
     }
+}
+
+private fun evalResult(val1: String, val2: String): String {
+    return "Il maggiore é: " +
+            if(val1 .toInt() > val2.toInt())
+                val1
+            else
+                val2
 }

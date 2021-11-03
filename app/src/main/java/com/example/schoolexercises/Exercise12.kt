@@ -54,18 +54,7 @@ fun RunExercise12(
 
         Button(
             enabled = nVal.isDigitsOnly() && nVal!="",
-            onClick = {
-                var evalText = ""
-                var i = 0
-                while (i < nVal.toInt()) {
-                    i++
-                    evalText = if (evalText == "")
-                        i.toString()
-                    else
-                        evalText + "\n" + i.toString()
-                }
-                setVal(evalText, 1)
-            },
+            onClick = { setVal(evalResult(nVal), 1) },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }
 
@@ -82,4 +71,17 @@ fun RunExercise12(
             fontSize = 20.sp
         )
     }
+}
+
+private fun evalResult(nVal: String): String {
+    var evalText = ""
+    var i = 0
+    while (i < nVal.toInt()) {
+        i++
+        evalText = if (evalText == "")
+            i.toString()
+        else
+            evalText + "\n" + i.toString()
+    }
+    return evalText
 }

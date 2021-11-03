@@ -64,9 +64,7 @@ fun RunExercise2(
 
         Button(
             enabled = add1Val.isDigitsOnly() && add1Val != "" && add2Val.isDigitsOnly() && add2Val != "",
-            onClick = {
-                setVal("La somma é: " + (add1Val.toInt() + add2Val.toInt()).toString(), 2)
-            },
+            onClick = { setVal(evalResult(add1Val, add2Val), 2) },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }
 
@@ -85,3 +83,6 @@ fun RunExercise2(
     }
 }
 
+private fun evalResult(add1: String, add2: String): String {
+    return "La somma é: " + (add1.toInt() + add2.toInt()).toString()
+}

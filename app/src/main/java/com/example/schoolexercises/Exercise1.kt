@@ -50,7 +50,7 @@ fun RunExercise1(
 
         Button(
             enabled = true,
-            onClick = { setOutputText("Ciao", 0) },
+            onClick = { setOutputText(evalResult(), 0) },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }
 
@@ -66,4 +66,8 @@ fun RunExercise1(
             fontSize = 20.sp
         )
     }
+}
+
+private fun evalResult(): String {
+    return "Ciao"
 }
