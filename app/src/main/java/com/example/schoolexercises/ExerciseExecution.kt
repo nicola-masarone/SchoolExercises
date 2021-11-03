@@ -16,18 +16,22 @@ fun ShowExercise(myViewModel: ExercisesViewModel) {
         )
 
         ExercisesViewModel.Exercise.EX2 -> RunExercise2(
-            {myAdd1Val, index1 -> myViewModel.setValArray(myAdd1Val, index1) },
+            {addVal, index -> myViewModel.setValArray(addVal, index) },
             add1Val = paramArray!![0],
-            {myAdd2Val, index2 -> myViewModel.setValArray(myAdd2Val, index2) },
             add2Val = paramArray!![1],
-            {myText, index -> myViewModel.setValArray(myText, index)},
+            outputText = paramArray!![2]
+        )
+
+        ExercisesViewModel.Exercise.EX3 -> RunExercise3(
+            {myVal, index -> myViewModel.setValArray(myVal, index) },
+            firstVal = paramArray!![0],
+            secondVal = paramArray!![1],
             outputText = paramArray!![2]
         )
 
         ExercisesViewModel.Exercise.EX12 -> RunExercise12(
-            {nVal, index -> myViewModel.setValArray(nVal, index)},
+            {myVal, index -> myViewModel.setValArray(myVal, index)},
             nVal = paramArray!![0],
-            {myText, index -> myViewModel.setValArray(myText, index)},
             outputText = paramArray!![1]
         )
 

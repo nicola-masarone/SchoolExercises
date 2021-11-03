@@ -24,11 +24,9 @@ import androidx.core.text.isDigitsOnly
 
 @Composable
 fun RunExercise2(
-    setAdd1Val: (add1Val: String, index1: Int ) -> Unit,
+    setVal: (addVal: String, index: Int ) -> Unit,
     add1Val: String,
-    setAdd2Val: (add2Val: String, index2: Int ) -> Unit,
     add2Val: String,
-    setOutputText: (outputText: String, index: Int) -> Unit,
     outputText: String
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
@@ -50,7 +48,7 @@ fun RunExercise2(
 
         OutlinedTextField(
             value = add1Val,
-            onValueChange = { setAdd1Val(it, 0) },
+            onValueChange = { setVal(it, 0) },
             label = { Text("Addendo 1") },
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -58,7 +56,7 @@ fun RunExercise2(
 
         OutlinedTextField(
             value = add2Val,
-            onValueChange = { setAdd2Val(it, 1) },
+            onValueChange = { setVal(it, 1) },
             label = { Text("Addendo 2") },
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -67,7 +65,7 @@ fun RunExercise2(
         Button(
             enabled = add1Val.isDigitsOnly() && add1Val != "" && add2Val.isDigitsOnly() && add2Val != "",
             onClick = {
-                setOutputText("La somma é: " + (add1Val.toInt() + add2Val.toInt()).toString(), 2)
+                setVal("La somma é: " + (add1Val.toInt() + add2Val.toInt()).toString(), 2)
             },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }

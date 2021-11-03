@@ -22,9 +22,10 @@ import androidx.compose.ui.unit.sp
 import androidx.core.text.isDigitsOnly
 
 @Composable
-fun RunExercise12(
+fun RunExercise3(
     setVal: (myVal: String, index: Int ) -> Unit,
-    nVal: String,
+    firstVal: String,
+    secondVal: String,
     outputText: String
 ) {
     Column(modifier = Modifier.padding(10.dp)) {
@@ -37,34 +38,39 @@ fun RunExercise12(
             Text(
                 fontSize = 16.sp,
                 text = buildAnnotatedString {
-                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) { append("Esercizio: Inserito un valore N, visualizzare i valori da 1 a N\n") }
-                    append("Inserire il valore N nella relativa casella e premere il tasto Play.")
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) { append("Esercizio: inserire due valori interi distinti e visualizzare il maggiore\n") }
+                    append("Inserire i due valori (diversi tra loro) nelle relative caselle e premere il tasto Play.")
                 },
                 modifier = Modifier.padding(vertical = 5.dp)
             )
         }
 
         OutlinedTextField(
-            value = nVal,
+            value = firstVal,
             onValueChange = { setVal(it, 0) },
-            label = { Text("N") },
+            label = { Text("Primo valore") },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        )
+
+        OutlinedTextField(
+            value = secondVal,
+            onValueChange = { setVal(it, 1) },
+            label = { Text("Secondo valore") },
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
 
         Button(
-            enabled = nVal.isDigitsOnly() && nVal!="",
+            enabled = firstVal.isDigitsOnly() && firstVal != "" && secondVal.isDigitsOnly() && secondVal != "" && firstVal!=secondVal,
             onClick = {
-                var evalText = ""
-                var i = 0
-                while (i < nVal.toInt()) {
-                    i++
-                    evalText = if (evalText == "")
-                        i.toString()
-                    else
-                        evalText + "\n" + i.toString()
-                }
-                setVal(evalText, 1)
+                setVal("Il maggiore é: " +
+                        if(firstVal.toInt() > secondVal.toInt())
+                            firstVal
+                        else
+                            secondVal,
+                    2
+                )
             },
             modifier = Modifier.padding(vertical = 10.dp)
         ) { Text(text = "Play") }
